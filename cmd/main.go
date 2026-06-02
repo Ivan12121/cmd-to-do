@@ -3,20 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
-	"time"
+	"todo-cli/internal"
 )
-
-type Task struct {
-	ID        int    `json:"id"`
-	Title     string `json:"title"`
-	Completed bool   `json:"complete"`
-	CreatedAt time.Time `json:"created_at"`
-}
-
-type TaskStore struct {
-	Tasks []Task `json:"tasks"`
-	nextId int
-}
 
 func main() {
 	if len(os.Args) < 2 {
@@ -28,11 +16,11 @@ func main() {
 
 	switch command {
 	case "add":
-		addTask()
+		internal.AddTask()
 	case "list":
-		lostTasks()
+		internal.ListTasks()
 	case "done":
-		deleteTask()
+		internal.DeleteTask()
 	default:
 		printUsage()
 	}
